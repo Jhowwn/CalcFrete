@@ -15,9 +15,9 @@ router.post('/insert', async (req, res) =>{
 router.get('/findAll', async (req, res) => {
     try{
         const found = await db.findAllcity();
-        res.status(201).send({message: found});
-    }catch{
-        res.status(500).send({mensage:`Internal Error Server`});
+        res.status(201).send(found);
+    }catch (err){
+        res.status(500).send({mensage: err});
     }
 });
 

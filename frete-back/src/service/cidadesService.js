@@ -11,7 +11,8 @@ async function insertCity({nameCity, typeCity, idUF}){
 
 async function findAllcity(){
     const conn = await database.connect();
-    const [rows] = await conn.query('select * from cidade');
+    const sql = `select * from cidade c join uf u on c.FK_ID_UF = u.ID_UF`
+    const [rows] = await conn.query(sql)
     conn.end();
 
     return rows;
